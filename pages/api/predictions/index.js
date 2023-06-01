@@ -16,10 +16,11 @@ export default async function handler(req, res) {
     body: JSON.stringify({
       // Pinned to a specific version of Stable Diffusion
       // See https://replicate.com/stability-ai/stable-diffussion/versions
-      version: "e22e77495f2fb83c34d5fae2ad8ab63c0a87b6b573b6208e1535b23b89ea66d6",
+      version: "1a98303504c7d866d2b198bae0b03237eab82edc1491a5306895d12b0021d6f6",
 
       // This is the text prompt that will be submitted by a form on the frontend
       input: {
+        model_checkpoint: "Protogen_V2.2.ckpt",
         max_frames: 100,
         animation_prompts: animationPrompt
        },
