@@ -71,7 +71,7 @@ export default function Home() {
       </p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="text" name="prompt" placeholder="Enter text prompts (comma separated)" />
+        <input autoComplete="off" type="text" name="prompt" placeholder="Enter text prompts (comma separated)" />
         <button type="submit">Go!</button>
       </form>
 
