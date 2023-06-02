@@ -143,7 +143,7 @@ export default function Home2() {
                     Elevate Your Advertising Strategy with AI-Driven Creatives
                   </h1>
                   <p className="relative mt-6 text-lg leading-8 text-gray-300 sm:max-w-md lg:max-w-none">
-                    Visually stand out and set yourself apart from other advertisers with Growth Creative's
+                    Visually stand out and set yourself apart from other advertisers with Growth Creative
                     AI powered Text-to-Video visual hooks. Be nimble,
                     quick, and lean.
                   </p>
