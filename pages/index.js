@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import '../src/app/globals.css'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -10,8 +10,10 @@ const navigation = [
   { name: 'Company', href: '#' },
 ]
 
-export default function Home2() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function Home() {
+  const { data: session } = useSession();
+  console.log('sesion', session)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="bg-gray-900">
