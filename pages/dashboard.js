@@ -14,7 +14,6 @@ export default function Home() {
     e.preventDefault();
     const prompt = e.target.prompt.value;
     const splitPrompt = prompt.split(',')
-    console.log('sp', splitPrompt)
     if (splitPrompt.length > 2) {
      setPromptError("Maximum prompt size exceeded: 2");
      return;
@@ -51,7 +50,6 @@ export default function Home() {
         setError(prediction.detail);
         return;
       }
-      console.log({prediction})
       setPrediction(prediction);
     }
   };
@@ -62,7 +60,7 @@ export default function Home() {
         <title>Replicate + Next.js</title>
       </Head>
 
-      <h1>
+      <h1 className="text-4xl py-4">
         Stable Diffusion Text to Video Generator
       </h1>
 

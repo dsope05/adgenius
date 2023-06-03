@@ -2,26 +2,11 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "./api/auth/[...nextauth]";
-import { getProviders, signIn, useSession } from "next-auth/react"
+import { getProviders, signIn } from "next-auth/react"
 import { useEffect } from 'react';
 
 export default function SignIn({ providers }) {
-  console.log("providers", providers);
   const router = useRouter();
-  const { status } = useSession();
-    console.log('status', status)
-  /*
-  useEffect(() => {
-    console.log('status', status)
-    if (status === "unauthenticated") {
-      console.log("No JWT");
-      console.log(status);
-      signIn("okta");
-    } else if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status])
-  */
   return (
     <>
       <div className="bg-gray-900 flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -133,7 +118,7 @@ export default function SignIn({ providers }) {
                 {Object.values(providers).map((provider) => (
               <div key={provider.id} className="mt-6 grid grid-cols-2 gap-4">
                 <button
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => signIn(provider.id, { callbackUrl: '/dashboard' })}
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
                 >
                   <Image

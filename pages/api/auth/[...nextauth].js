@@ -11,15 +11,6 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  pages: {
-    signIn: '/auth/signin',
-  },
-  callbacks: {
-    async session({ session }) {
-      console.log('SESSION SERVER', session)
-      return session
-    }
-  }
 }
 
 export default NextAuth(authOptions)

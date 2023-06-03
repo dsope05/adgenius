@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/router'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -11,8 +12,8 @@ const navigation = [
 ]
 
 export default function Home() {
-  const { data: session } = useSession();
-  console.log('sesion', session)
+  const { status } = useSession();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -47,9 +48,16 @@ export default function Home() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-300">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            { status === 'authenticated' && (
+              <button onClick={() => signOut()} className="text-sm font-semibold leading-6 text-gray-300">
+                Log out
+              </button>
+            )
+            }{ status === 'unauthenticated' && (
+              <button onClick={() => router.push('/signIn')} className="text-sm font-semibold leading-6 text-gray-300">
+                Log in <span aria-hidden="true">&rarr;</span>
+              </button>
+            )}
           </div>
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
